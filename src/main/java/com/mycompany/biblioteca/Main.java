@@ -53,6 +53,32 @@ public class Main {
         return null;
     }
     
+    public static void updateClient (String id) {
+        
+        Client client = findClient(id);
+        
+        if (client == null){
+            System.out.println("client not found.");
+            return;
+        }
+        
+        System.out.println("Enter new name");
+        String name = sc.nextLine();
+
+        System.out.println("Enter new phone");
+        String phone = sc.nextLine();
+
+        System.out.println("Enter new email");
+        String email = sc.nextLine();
+
+        client.setName(name);
+        client.setPhone(phone);
+        client.setEmail(email);
+        
+        System.out.println("Client updated successfully");   
+    }
+    
+    
     public static void main(String[] args) {
         
     }
