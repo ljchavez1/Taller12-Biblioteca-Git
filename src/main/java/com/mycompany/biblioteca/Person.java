@@ -46,5 +46,10 @@ public class Person {
         this.phone = phone;
     }
     
+        @Override
+    public String toString (){
+        return "ID:" + id + " | Name: " + name + " | Phone: " + phone;
+    }
+    
             
 }
