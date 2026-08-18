@@ -38,6 +38,12 @@ public class Main {
 
     }
     
+    public static void listClients () {
+        for (Client client : clients) {
+            System.out.println(client);    
+        }
+    }
+    
     public static void main(String[] args) {
         
     }
