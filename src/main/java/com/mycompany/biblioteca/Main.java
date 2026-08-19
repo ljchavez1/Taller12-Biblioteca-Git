@@ -14,6 +14,7 @@ import java.util.Scanner;
 public class Main {
 
     static ArrayList<Client> clients = new ArrayList<>();
+    static ArrayList<Book> books = new ArrayList<>();
     static Scanner sc = new Scanner(System.in);
     
     public static void createClient() {
@@ -91,6 +92,29 @@ public class Main {
         
         System.out.println("Client deleted successfully");
     }
+    
+    public static void createBook() {
+
+        System.out.println("Enter code");
+        String code = sc.nextLine();
+
+        System.out.println("Enter title");
+        String title = sc.nextLine();
+
+        System.out.println("Enter publication year");
+        String publicationYear = sc.nextLine();
+
+        System.out.println("Enter author");
+        String author = sc.nextLine();
+
+        Book book = new Book(code, title, publicationYear, author, true);
+
+        books.add(book);
+
+        System.out.println("Book created successfully.");
+    }
+    
+    
     
     
     public static void main(String[] args) {
