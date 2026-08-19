@@ -15,6 +15,7 @@ public class Main {
 
     static ArrayList<Client> clients = new ArrayList<>();
     static ArrayList<Book> books = new ArrayList<>();
+    static ArrayList<Loan> loans = new ArrayList<>();
     static Scanner sc = new Scanner(System.in);
     
     public static void createClient() {
@@ -172,12 +173,51 @@ public class Main {
         System.out.println("Book deleted successfully.");
     }
     
-    
-    
-    
-    
-    
-    
+    public static void createLoan() {
+
+        System.out.print("Enter loan ID: ");
+        String loanId = sc.nextLine();
+
+        System.out.print("Enter client ID: ");
+        String clientId = sc.nextLine();
+
+        Client client = findClient(clientId);
+
+        if (client == null) {
+            System.out.println("Client not found.");
+            return;
+        }
+
+        System.out.print("Enter book code: ");
+        String bookCode = sc.nextLine();
+
+        Book book = findBook(bookCode);
+
+        if (book == null) {
+            System.out.println("Book not found.");
+            return;
+        }
+
+        if (!book.getAvailable()) {
+            System.out.println("Book is not available.");
+            return;
+        }
+
+        Loan loan = new Loan(
+                loanId,
+                client,
+                book,
+                java.time.LocalDate.now(),
+                "ACTIVE"
+        );
+
+        loans.add(loan);
+
+        book.setAvailable(false);
+
+        System.out.println("Loan created successfully.");
+    }
+     
     
     public static void main(String[] args) {
         
