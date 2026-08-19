@@ -132,7 +132,31 @@ public class Main {
 
         return null;
     }
-    
+
+    public static void updateBook(String code) {
+
+        Book book = findBook(code);
+
+        if (book == null) {
+            System.out.println("Book not found.");
+            return;
+        }
+
+        System.out.println("Enter new title");
+        String title = sc.nextLine();
+
+        System.out.println("Enter new publication year");
+        String publicationYear = sc.nextLine();
+
+        System.out.println("Enter new author");
+        String author = sc.nextLine();
+
+        book.setTitle(title);
+        book.setPublicationYear(publicationYear);
+        book.setAuthor(author);
+
+        System.out.println("Book updated successfully.");
+    }
     
     
     
