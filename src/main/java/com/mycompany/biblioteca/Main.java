@@ -114,6 +114,16 @@ public class Main {
         System.out.println("Book created successfully.");
     }
     
+    public static void listBooks() {
+
+        for (Book book : books) {
+            System.out.println(book);
+        }
+
+    }
+    
+    
+    
     
     
     
