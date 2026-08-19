@@ -244,18 +244,20 @@ public class Main {
         System.out.println("Loan returned successfully.");
     }
     
+    public static void listLoans() {
+
+        for (Loan loan : loans) {
+            if (loan.getStatus().equals("ACTIVE")) {
+                System.out.println(loan);
+            }
+        }
+    }
+    
     
 
     
     public static void main(String[] args) {
-            createClient();
-    createBook();
-    createLoan();
-
-    System.out.print("Enter loan ID to return: ");
-    String loanId = sc.nextLine();
-
-    returnLoan(loanId);
+        
     }
 
 }
