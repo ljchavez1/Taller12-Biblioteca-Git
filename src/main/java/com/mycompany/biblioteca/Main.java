@@ -217,11 +217,45 @@ public class Main {
 
         System.out.println("Loan created successfully.");
     }
-     
+    
+    public static Loan findLoan(String loanId) {
+
+        for (Loan loan : loans) {
+            if (loan.getLoanId().equals(loanId)) {
+                return loan;
+            }
+        }
+
+        return null;
+    }
+    
+    public static void returnLoan(String loanId) {
+
+        Loan loan = findLoan(loanId);
+
+        if (loan == null) {
+            System.out.println("Loan not found.");
+            return;
+        }
+
+        loan.setStatus("RETURNED");
+        loan.getBook().setAvailable(true);
+
+        System.out.println("Loan returned successfully.");
+    }
+    
+    
+
     
     public static void main(String[] args) {
-        
-    }
+            createClient();
+    createBook();
+    createLoan();
 
+    System.out.print("Enter loan ID to return: ");
+    String loanId = sc.nextLine();
+
+    returnLoan(loanId);
+    }
 
 }
