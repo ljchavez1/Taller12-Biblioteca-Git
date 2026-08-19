@@ -157,6 +157,21 @@ public class Main {
 
         System.out.println("Book updated successfully.");
     }
+
+    public static void deleteBook(String code) {
+
+        Book book = findBook(code);
+
+        if (book == null) {
+            System.out.println("Book not found.");
+            return;
+        }
+
+        books.remove(book);
+
+        System.out.println("Book deleted successfully.");
+    }
+    
     
     
     
