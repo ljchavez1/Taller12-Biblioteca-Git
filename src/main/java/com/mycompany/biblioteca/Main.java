@@ -122,6 +122,19 @@ public class Main {
 
     }
     
+    public static Book findBook(String code) {
+
+        for (Book book : books) {
+            if (book.getCode().equals(code)) {
+                return book;
+            }
+        }
+
+        return null;
+    }
+    
+    
+    
     
     
     
