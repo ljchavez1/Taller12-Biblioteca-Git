@@ -14,6 +14,7 @@ import java.util.Scanner;
 public class Main {
 
     static ArrayList<Client> clients = new ArrayList<>();
+    static ArrayList<Book> books = new ArrayList<>();
     static Scanner sc = new Scanner(System.in);
     
     public static void createClient() {
@@ -91,6 +92,91 @@ public class Main {
         
         System.out.println("Client deleted successfully");
     }
+    
+    public static void createBook() {
+
+        System.out.println("Enter code");
+        String code = sc.nextLine();
+
+        System.out.println("Enter title");
+        String title = sc.nextLine();
+
+        System.out.println("Enter publication year");
+        String publicationYear = sc.nextLine();
+
+        System.out.println("Enter author");
+        String author = sc.nextLine();
+
+        Book book = new Book(code, title, publicationYear, author, true);
+
+        books.add(book);
+
+        System.out.println("Book created successfully.");
+    }
+    
+    public static void listBooks() {
+
+        for (Book book : books) {
+            System.out.println(book);
+        }
+
+    }
+    
+    public static Book findBook(String code) {
+
+        for (Book book : books) {
+            if (book.getCode().equals(code)) {
+                return book;
+            }
+        }
+
+        return null;
+    }
+
+    public static void updateBook(String code) {
+
+        Book book = findBook(code);
+
+        if (book == null) {
+            System.out.println("Book not found.");
+            return;
+        }
+
+        System.out.println("Enter new title");
+        String title = sc.nextLine();
+
+        System.out.println("Enter new publication year");
+        String publicationYear = sc.nextLine();
+
+        System.out.println("Enter new author");
+        String author = sc.nextLine();
+
+        book.setTitle(title);
+        book.setPublicationYear(publicationYear);
+        book.setAuthor(author);
+
+        System.out.println("Book updated successfully.");
+    }
+
+    public static void deleteBook(String code) {
+
+        Book book = findBook(code);
+
+        if (book == null) {
+            System.out.println("Book not found.");
+            return;
+        }
+
+        books.remove(book);
+
+        System.out.println("Book deleted successfully.");
+    }
+    
+    
+    
+    
+    
+    
     
     
     public static void main(String[] args) {
