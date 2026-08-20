@@ -243,7 +243,7 @@ public class Main {
 
         System.out.println("Loan returned successfully.");
     }
-    
+
     public static void listLoans() {
 
         for (Loan loan : loans) {
@@ -252,12 +252,198 @@ public class Main {
             }
         }
     }
-    
-    
 
-    
     public static void main(String[] args) {
-        
+        int option;
+
+        do {
+            System.out.println("\n===== LIBRARY MANAGEMENT SYSTEM =====");
+            System.out.println("1. Client management");
+            System.out.println("2. Book management");
+            System.out.println("3. Loan management");
+            System.out.println("0. Exit");
+            System.out.print("Choose an option: ");
+
+            option = Integer.parseInt(sc.nextLine());
+
+            switch (option) {
+                case 1:
+
+                    int clientOption;
+
+                    do {
+                        System.out.println("\n===== CLIENT MANAGEMENT =====");
+                        System.out.println("1. Create client");
+                        System.out.println("2. List clients");
+                        System.out.println("3. Find client");
+                        System.out.println("4. Update client");
+                        System.out.println("5. Delete client");
+                        System.out.println("0. Back");
+                        System.out.print("Choose an option: ");
+
+                        clientOption = Integer.parseInt(sc.nextLine());
+
+                        switch (clientOption) {
+
+                            case 1:
+                                createClient();
+                                break;
+
+                            case 2:
+                                listClients();
+                                break;
+
+                            case 3:
+                                System.out.print("Enter client ID: ");
+                                String clientId = sc.nextLine();
+
+                                Client client = findClient(clientId);
+
+                                if (client == null) {
+                                    System.out.println("Client not found.");
+                                } else {
+                                    System.out.println(client);
+                                }
+                                break;
+
+                            case 4:
+                                System.out.print("Enter client ID: ");
+                                String updateId = sc.nextLine();
+                                updateClient(updateId);
+                                break;
+
+                            case 5:
+                                System.out.print("Enter client ID: ");
+                                String deleteId = sc.nextLine();
+                                deleteClient(deleteId);
+                                break;
+
+                            case 0:
+                                System.out.println("Returning to main menu.");
+                                break;
+
+                            default:
+                                System.out.println("Invalid option.");
+                        }
+
+                    } while (clientOption != 0);
+
+                    break;
+
+                case 2:
+
+                    int bookOption;
+
+                    do {
+                        System.out.println("\n===== BOOK MANAGEMENT =====");
+                        System.out.println("1. Create book");
+                        System.out.println("2. List books");
+                        System.out.println("3. Find book");
+                        System.out.println("4. Update book");
+                        System.out.println("5. Delete book");
+                        System.out.println("0. Back");
+                        System.out.print("Choose an option: ");
+
+                        bookOption = Integer.parseInt(sc.nextLine());
+
+                        switch (bookOption) {
+
+                            case 1:
+                                createBook();
+                                break;
+
+                            case 2:
+                                listBooks();
+                                break;
+
+                            case 3:
+                                System.out.print("Enter book code: ");
+                                String bookCode = sc.nextLine();
+
+                                Book book = findBook(bookCode);
+
+                                if (book == null) {
+                                    System.out.println("Book not found.");
+                                } else {
+                                    System.out.println(book);
+                                }
+                                break;
+
+                            case 4:
+                                System.out.print("Enter book code: ");
+                                String updateCode = sc.nextLine();
+                                updateBook(updateCode);
+                                break;
+
+                            case 5:
+                                System.out.print("Enter book code: ");
+                                String deleteCode = sc.nextLine();
+                                deleteBook(deleteCode);
+                                break;
+
+                            case 0:
+                                System.out.println("Returning to main menu.");
+                                break;
+
+                            default:
+                                System.out.println("Invalid option.");
+                        }
+
+                    } while (bookOption != 0);
+
+                    break;
+
+                case 3:
+
+                    int loanOption;
+
+                    do {
+                        System.out.println("\n===== LOAN MANAGEMENT =====");
+                        System.out.println("1. Create loan");
+                        System.out.println("2. Return loan");
+                        System.out.println("3. List active loans");
+                        System.out.println("0. Back");
+                        System.out.print("Choose an option: ");
+
+                        loanOption = Integer.parseInt(sc.nextLine());
+
+                        switch (loanOption) {
+
+                            case 1:
+                                createLoan();
+                                break;
+
+                            case 2:
+                                System.out.print("Enter loan ID: ");
+                                String loanId = sc.nextLine();
+                                returnLoan(loanId);
+                                break;
+
+                            case 3:
+                                listLoans();
+                                break;
+
+                            case 0:
+                                System.out.println("Returning to main menu.");
+                                break;
+
+                            default:
+                                System.out.println("Invalid option.");
+                        }
+
+                    } while (loanOption != 0);
+
+                    break;
+
+                case 0:
+                    System.out.println("Goodbye.");
+                    break;
+
+                default:
+                    System.out.println("Invalid option.");
+            }
+
+        } while (option != 0);
     }
 
 }
